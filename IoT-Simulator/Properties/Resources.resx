@@ -122,7 +122,8 @@
   "DeviceId" : "{0}",
   "SendDate" : "{1}",
   "Message" : "Hello, Azure IoT Hub",
-  "Sender" : "maduka"
+  "Sender" : "maduka",
+  "Type" : "Alert"
 }</value>
   </data>
 </root>

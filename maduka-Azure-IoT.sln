@@ -9,6 +9,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Simulator", "Simulator", "{
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IoT-Simulator", "IoT-Simulator\IoT-Simulator.csproj", "{D40543D2-A841-4056-9680-7B00C544C2DB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JobProcessor", "WebJob\JobProcessor\JobProcessor.csproj", "{FA15567F-738B-4D1C-AA11-A3220DC91DC4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,11 +21,16 @@ Global
 		{D40543D2-A841-4056-9680-7B00C544C2DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D40543D2-A841-4056-9680-7B00C544C2DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D40543D2-A841-4056-9680-7B00C544C2DB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FA15567F-738B-4D1C-AA11-A3220DC91DC4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FA15567F-738B-4D1C-AA11-A3220DC91DC4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FA15567F-738B-4D1C-AA11-A3220DC91DC4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FA15567F-738B-4D1C-AA11-A3220DC91DC4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{D40543D2-A841-4056-9680-7B00C544C2DB} = {C86D0E81-359A-401C-A6E7-F09AF602F717}
+		{FA15567F-738B-4D1C-AA11-A3220DC91DC4} = {ACF2B877-7B45-4C03-B918-177B62CB5080}
 	EndGlobalSection
 EndGlobal

@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.24720.0
+VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WebJob", "WebJob", "{ACF2B877-7B45-4C03-B918-177B62CB5080}"
 EndProject
@@ -10,6 +10,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IoT-Simulator", "IoT-Simulator\IoT-Simulator.csproj", "{D40543D2-A841-4056-9680-7B00C544C2DB}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JobProcessor", "WebJob\JobProcessor\JobProcessor.csproj", "{FA15567F-738B-4D1C-AA11-A3220DC91DC4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Controller", "Controller", "{4339BE1C-99FF-4312-8AC3-1C4595717D82}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IoT-Controller", "IoT-Controller\IoT-Controller.csproj", "{62C86145-9E5C-4D50-B367-B22A80F6C3EE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -25,6 +29,10 @@ Global
 		{FA15567F-738B-4D1C-AA11-A3220DC91DC4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FA15567F-738B-4D1C-AA11-A3220DC91DC4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FA15567F-738B-4D1C-AA11-A3220DC91DC4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{62C86145-9E5C-4D50-B367-B22A80F6C3EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{62C86145-9E5C-4D50-B367-B22A80F6C3EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{62C86145-9E5C-4D50-B367-B22A80F6C3EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{62C86145-9E5C-4D50-B367-B22A80F6C3EE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -32,5 +40,6 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{D40543D2-A841-4056-9680-7B00C544C2DB} = {C86D0E81-359A-401C-A6E7-F09AF602F717}
 		{FA15567F-738B-4D1C-AA11-A3220DC91DC4} = {ACF2B877-7B45-4C03-B918-177B62CB5080}
+		{62C86145-9E5C-4D50-B367-B22A80F6C3EE} = {4339BE1C-99FF-4312-8AC3-1C4595717D82}
 	EndGlobalSection
 EndGlobal

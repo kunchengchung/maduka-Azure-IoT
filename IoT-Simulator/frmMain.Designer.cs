@@ -37,6 +37,7 @@
             this.lblMessage = new System.Windows.Forms.Label();
             this.txtMessage = new System.Windows.Forms.TextBox();
             this.btnSend = new System.Windows.Forms.Button();
+            this.btnSendToWebAPI = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnRegistry
@@ -122,7 +123,7 @@
             // btnSend
             // 
             this.btnSend.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSend.Location = new System.Drawing.Point(428, 319);
+            this.btnSend.Location = new System.Drawing.Point(428, 290);
             this.btnSend.Name = "btnSend";
             this.btnSend.Size = new System.Drawing.Size(75, 23);
             this.btnSend.TabIndex = 0;
@@ -130,11 +131,22 @@
             this.btnSend.UseVisualStyleBackColor = true;
             this.btnSend.Click += new System.EventHandler(this.btnSend_Click);
             // 
+            // btnSendToWebAPI
+            // 
+            this.btnSendToWebAPI.Location = new System.Drawing.Point(428, 319);
+            this.btnSendToWebAPI.Name = "btnSendToWebAPI";
+            this.btnSendToWebAPI.Size = new System.Drawing.Size(75, 23);
+            this.btnSendToWebAPI.TabIndex = 4;
+            this.btnSendToWebAPI.Text = "To WebAPI";
+            this.btnSendToWebAPI.UseVisualStyleBackColor = true;
+            this.btnSendToWebAPI.Click += new System.EventHandler(this.btnSendToWebAPI_Click);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(515, 354);
+            this.Controls.Add(this.btnSendToWebAPI);
             this.Controls.Add(this.lblMessage);
             this.Controls.Add(this.lblDeviceKey);
             this.Controls.Add(this.lblDeviceId);
@@ -163,6 +175,7 @@
         private System.Windows.Forms.Label lblMessage;
         private System.Windows.Forms.TextBox txtMessage;
         private System.Windows.Forms.Button btnSend;
+        private System.Windows.Forms.Button btnSendToWebAPI;
     }
 }
 

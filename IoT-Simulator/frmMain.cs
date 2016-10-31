@@ -5,9 +5,12 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Windows.Forms;
+using Newtonsoft.Json;
 
 namespace IoT_Simulator
 {
@@ -115,6 +118,69 @@ namespace IoT_Simulator
             await deviceClient.SendEventAsync(new Microsoft.Azure.Devices.Client.Message(Encoding.UTF8.GetBytes(strJsonMessage)));
 
             MessageBox.Show("訊息已傳送成功");
+        }
+
+        /// <summary>
+        /// 將訊息送出至WebAPI的動作
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnSendToWebAPI_Click(object sender, EventArgs e)
+        {
+            // 因為只要送到WebAPI，所以只要訊息跟裝置代碼就夠了
+            MessageModel objMsg = new MessageModel()
+            {
+                DeviceId = txtDeviceId.Text,
+                MessageContent = txtMessage.Text,
+            };
+
+            // 放在網路上的WebApp的Url
+            string strUrl = "[WebAPI的Url]";
+
+            // 送出至WebAPI
+            HttpStatusCode code = HttpStatusCode.OK;
+            string strResponse = CallAPI(strUrl, "POST", JsonConvert.SerializeObject(objMsg) , out code);
+
+            if (code == HttpStatusCode.OK)
+            {
+                MessageBox.Show("發送完成");
+            }
+            else
+            {
+                MessageBox.Show("發送失敗," + strResponse);
+            }
+        }
+
+        protected string CallAPI(string strUrl, string strHttpMethod, string strPostContent, out HttpStatusCode code)
+        {
+            HttpWebRequest request = HttpWebRequest.Create(strUrl) as HttpWebRequest;
+            request.Method = strHttpMethod;
+            code = HttpStatusCode.OK;
+
+            if (strPostContent != "" && strPostContent != string.Empty)
+            {
+                request.KeepAlive = true;
+                request.ContentType = "application/json";
+
+                byte[] bs = Encoding.ASCII.GetBytes(strPostContent);
+                Stream reqStream = request.GetRequestStream();
+                reqStream.Write(bs, 0, bs.Length);
+            }
+
+            string strReturn = "";
+            try
+            {
+                HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+                var respStream = response.GetResponseStream();
+                strReturn = new StreamReader(respStream).ReadToEnd();
+            }
+            catch (Exception e)
+            {
+                strReturn = e.Message;
+                code = HttpStatusCode.NotFound;
+            }
+
+            return strReturn;
         }
     }
 }

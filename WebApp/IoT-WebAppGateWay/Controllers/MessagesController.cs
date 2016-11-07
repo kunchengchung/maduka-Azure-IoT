@@ -1,4 +1,5 @@
 ﻿using Microsoft.Azure.Devices.Client;
+using StackExchange.Redis;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +14,21 @@ namespace IoT_WebAppGateWay.Controllers
     public class MessagesController : ApiController
     {
         static string iotHubUri = "[IoT Hub的Url]";
+        static string redisCacheConnectionString = "[Redis Cache連接字串]";
+
+        // 開啟Redis Cache的連線
+        private static Lazy<ConnectionMultiplexer> lazyConnection = new Lazy<ConnectionMultiplexer>(() =>
+        {
+            return ConnectionMultiplexer.Connect(redisCacheConnectionString);
+        });
+
+        public static ConnectionMultiplexer objConn
+        {
+            get
+            {
+                return lazyConnection.Value;
+            }
+        }
 
         /// <summary>
         /// 發送訊息至IoT Hub
@@ -26,18 +42,31 @@ namespace IoT_WebAppGateWay.Controllers
 
             try
             {
-                // 透過EF找出資料庫中該裝置的Key值
-                Models.DeviceFile objDevice = new Models.IoTModel().DeviceFile.FirstOrDefault(x => x.DeviceId == value.DeviceId);
+                // 先確認快取中有沒有資料
+                IDatabase objCache = objConn.GetDatabase();
+                RedisValue objValue = objCache.StringGet(value.DeviceId);
+                string strKey = (objValue.HasValue) ? objValue.ToString() : "";
 
-                if (objDevice != null)
+                if (strKey == "")
                 {
-                    string strDeviceKey = objDevice.DeviceKey;
+                    // 透過EF找出資料庫中該裝置的Key值
+                    Models.DeviceFile objDevice = new Models.IoTModel().DeviceFile.FirstOrDefault(x => x.DeviceId == value.DeviceId);
 
+                    if (objDevice != null)
+                    {
+                        strKey = objDevice.DeviceKey;
+                        // 寫入快取資料
+                        objCache.StringSet(value.DeviceId, strKey);
+                    }
+                }
+
+                if (strKey != "")
+                {
                     // 傳送訊息進入IoT Hub
                     DeviceClient deviceClient = null;
                     deviceClient = DeviceClient.CreateFromConnectionString
                     (
-                        $"HostName={iotHubUri};DeviceId={objDevice.DeviceId};SharedAccessKey={objDevice.DeviceKey}",
+                        $"HostName={iotHubUri};DeviceId={value.DeviceId};SharedAccessKey={strKey}",
                         Microsoft.Azure.Devices.Client.TransportType.Amqp
                     );
 

@@ -38,14 +38,16 @@
             this.txtMessage = new System.Windows.Forms.TextBox();
             this.btnSend = new System.Windows.Forms.Button();
             this.btnSendToWebAPI = new System.Windows.Forms.Button();
+            this.btnReceiveMessage = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnRegistry
             // 
             this.btnRegistry.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnRegistry.Location = new System.Drawing.Point(428, 10);
+            this.btnRegistry.Location = new System.Drawing.Point(927, 20);
+            this.btnRegistry.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.btnRegistry.Name = "btnRegistry";
-            this.btnRegistry.Size = new System.Drawing.Size(75, 23);
+            this.btnRegistry.Size = new System.Drawing.Size(163, 46);
             this.btnRegistry.TabIndex = 0;
             this.btnRegistry.Text = "Registry";
             this.btnRegistry.UseVisualStyleBackColor = true;
@@ -55,45 +57,50 @@
             // 
             this.txtDeviceId.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtDeviceId.Location = new System.Drawing.Point(77, 12);
+            this.txtDeviceId.Location = new System.Drawing.Point(167, 24);
+            this.txtDeviceId.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.txtDeviceId.Name = "txtDeviceId";
-            this.txtDeviceId.Size = new System.Drawing.Size(345, 22);
+            this.txtDeviceId.Size = new System.Drawing.Size(743, 36);
             this.txtDeviceId.TabIndex = 1;
             // 
             // txtDeviceKey
             // 
             this.txtDeviceKey.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtDeviceKey.Location = new System.Drawing.Point(77, 40);
+            this.txtDeviceKey.Location = new System.Drawing.Point(167, 80);
+            this.txtDeviceKey.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.txtDeviceKey.Name = "txtDeviceKey";
             this.txtDeviceKey.ReadOnly = true;
-            this.txtDeviceKey.Size = new System.Drawing.Size(345, 22);
+            this.txtDeviceKey.Size = new System.Drawing.Size(743, 36);
             this.txtDeviceKey.TabIndex = 2;
             // 
             // lblDeviceId
             // 
             this.lblDeviceId.AutoSize = true;
-            this.lblDeviceId.Location = new System.Drawing.Point(12, 15);
+            this.lblDeviceId.Location = new System.Drawing.Point(26, 30);
+            this.lblDeviceId.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
             this.lblDeviceId.Name = "lblDeviceId";
-            this.lblDeviceId.Size = new System.Drawing.Size(50, 12);
+            this.lblDeviceId.Size = new System.Drawing.Size(98, 24);
             this.lblDeviceId.TabIndex = 3;
             this.lblDeviceId.Text = "Device Id";
             // 
             // lblDeviceKey
             // 
             this.lblDeviceKey.AutoSize = true;
-            this.lblDeviceKey.Location = new System.Drawing.Point(12, 43);
+            this.lblDeviceKey.Location = new System.Drawing.Point(26, 86);
+            this.lblDeviceKey.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
             this.lblDeviceKey.Name = "lblDeviceKey";
-            this.lblDeviceKey.Size = new System.Drawing.Size(59, 12);
+            this.lblDeviceKey.Size = new System.Drawing.Size(116, 24);
             this.lblDeviceKey.TabIndex = 3;
             this.lblDeviceKey.Text = "Device Key";
             // 
             // btnUnregistry
             // 
             this.btnUnregistry.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnUnregistry.Location = new System.Drawing.Point(428, 40);
+            this.btnUnregistry.Location = new System.Drawing.Point(927, 80);
+            this.btnUnregistry.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.btnUnregistry.Name = "btnUnregistry";
-            this.btnUnregistry.Size = new System.Drawing.Size(75, 23);
+            this.btnUnregistry.Size = new System.Drawing.Size(163, 46);
             this.btnUnregistry.TabIndex = 0;
             this.btnUnregistry.Text = "Unregistry";
             this.btnUnregistry.UseVisualStyleBackColor = true;
@@ -102,9 +109,10 @@
             // lblMessage
             // 
             this.lblMessage.AutoSize = true;
-            this.lblMessage.Location = new System.Drawing.Point(12, 71);
+            this.lblMessage.Location = new System.Drawing.Point(26, 142);
+            this.lblMessage.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
             this.lblMessage.Name = "lblMessage";
-            this.lblMessage.Size = new System.Drawing.Size(44, 12);
+            this.lblMessage.Size = new System.Drawing.Size(89, 24);
             this.lblMessage.TabIndex = 3;
             this.lblMessage.Text = "Message";
             // 
@@ -114,18 +122,20 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtMessage.Font = new System.Drawing.Font("新細明體", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.txtMessage.Location = new System.Drawing.Point(77, 68);
+            this.txtMessage.Location = new System.Drawing.Point(167, 136);
+            this.txtMessage.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.txtMessage.Multiline = true;
             this.txtMessage.Name = "txtMessage";
-            this.txtMessage.Size = new System.Drawing.Size(345, 274);
+            this.txtMessage.Size = new System.Drawing.Size(743, 544);
             this.txtMessage.TabIndex = 2;
             // 
             // btnSend
             // 
             this.btnSend.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSend.Location = new System.Drawing.Point(428, 290);
+            this.btnSend.Location = new System.Drawing.Point(927, 580);
+            this.btnSend.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.btnSend.Name = "btnSend";
-            this.btnSend.Size = new System.Drawing.Size(75, 23);
+            this.btnSend.Size = new System.Drawing.Size(163, 46);
             this.btnSend.TabIndex = 0;
             this.btnSend.Text = "Send";
             this.btnSend.UseVisualStyleBackColor = true;
@@ -133,19 +143,31 @@
             // 
             // btnSendToWebAPI
             // 
-            this.btnSendToWebAPI.Location = new System.Drawing.Point(428, 319);
+            this.btnSendToWebAPI.Location = new System.Drawing.Point(927, 638);
+            this.btnSendToWebAPI.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.btnSendToWebAPI.Name = "btnSendToWebAPI";
-            this.btnSendToWebAPI.Size = new System.Drawing.Size(75, 23);
+            this.btnSendToWebAPI.Size = new System.Drawing.Size(163, 46);
             this.btnSendToWebAPI.TabIndex = 4;
             this.btnSendToWebAPI.Text = "To WebAPI";
             this.btnSendToWebAPI.UseVisualStyleBackColor = true;
             this.btnSendToWebAPI.Click += new System.EventHandler(this.btnSendToWebAPI_Click);
             // 
+            // btnReceiveMessage
+            // 
+            this.btnReceiveMessage.Location = new System.Drawing.Point(927, 525);
+            this.btnReceiveMessage.Name = "btnReceiveMessage";
+            this.btnReceiveMessage.Size = new System.Drawing.Size(163, 46);
+            this.btnReceiveMessage.TabIndex = 5;
+            this.btnReceiveMessage.Text = "Receive MSG";
+            this.btnReceiveMessage.UseVisualStyleBackColor = true;
+            this.btnReceiveMessage.Click += new System.EventHandler(this.btnReceiveMessage_Click);
+            // 
             // frmMain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(515, 354);
+            this.ClientSize = new System.Drawing.Size(1116, 708);
+            this.Controls.Add(this.btnReceiveMessage);
             this.Controls.Add(this.btnSendToWebAPI);
             this.Controls.Add(this.lblMessage);
             this.Controls.Add(this.lblDeviceKey);
@@ -156,6 +178,7 @@
             this.Controls.Add(this.btnSend);
             this.Controls.Add(this.btnUnregistry);
             this.Controls.Add(this.btnRegistry);
+            this.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.Name = "frmMain";
             this.Text = "IoT Device Simulator";
             this.Load += new System.EventHandler(this.frmMain_Load);
@@ -176,6 +199,7 @@
         private System.Windows.Forms.TextBox txtMessage;
         private System.Windows.Forms.Button btnSend;
         private System.Windows.Forms.Button btnSendToWebAPI;
+        private System.Windows.Forms.Button btnReceiveMessage;
     }
 }
 

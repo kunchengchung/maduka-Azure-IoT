@@ -11,6 +11,7 @@ using System.Net;
 using System.Text;
 using System.Windows.Forms;
 using Newtonsoft.Json;
+using System.Threading.Tasks;
 
 namespace IoT_Simulator
 {
@@ -148,6 +149,38 @@ namespace IoT_Simulator
             else
             {
                 MessageBox.Show("發送失敗," + strResponse);
+            }
+        }
+
+        /// <summary>
+        /// 按下回收訊息的動作
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnReceiveMessage_Click(object sender, EventArgs e)
+        {
+            this.Receive();
+        }
+
+        /// <summary>
+        /// 執行回收訊息的動作
+        /// </summary>
+        /// <returns></returns>
+        public async Task Receive()
+        {
+            DeviceClient deviceClient = DeviceClient.CreateFromConnectionString($"HostName={strIoTHubUrl};DeviceId={txtDeviceId.Text};SharedAccessKey={txtDeviceKey.Text}", Microsoft.Azure.Devices.Client.TransportType.Amqp);
+            Microsoft.Azure.Devices.Client.Message receivedMessage;
+            string messageData;
+            while (true)
+            {
+                receivedMessage = await deviceClient.ReceiveAsync(TimeSpan.FromSeconds(1));
+
+                if (receivedMessage != null)
+                {
+                    messageData = Encoding.UTF8.GetString(receivedMessage.GetBytes());
+                    await deviceClient.CompleteAsync(receivedMessage);
+                    MessageBox.Show(messageData);
+                }
             }
         }
 

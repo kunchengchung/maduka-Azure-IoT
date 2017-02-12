@@ -35,6 +35,13 @@ namespace IoT_Controller
             serviceMessage.Ack = DeliveryAcknowledgement.Full;
             serviceMessage.MessageId = Guid.NewGuid().ToString();
             await serviceClient.SendAsync(strDeviceId, serviceMessage);
+
+            if (txtCallMethod.Text != "")
+            {
+                TimeSpan objTimeSpan = new TimeSpan(0, 0, 0, int.Parse(txtTimeout.Text));
+                await serviceClient.InvokeDeviceMethodAsync(txtDeviceId.Text, new CloudToDeviceMethod(txtCallMethod.Text, objTimeSpan));
+            }
+
             await serviceClient.CloseAsync();
         }
     }

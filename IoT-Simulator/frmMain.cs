@@ -103,6 +103,43 @@ namespace IoT_Simulator
         }
 
         /// <summary>
+        /// 傳送檔案到IoT Hub中
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private async void btnUploadFile_Click(object sender, EventArgs e)
+        {
+            string strDeviceId = txtDeviceId.Text;
+            string strDeviceKey = txtDeviceKey.Text;
+
+            DeviceClient deviceClient = DeviceClient.Create(strIoTHubUrl,
+                new DeviceAuthenticationWithRegistrySymmetricKey(strDeviceId, strDeviceKey));
+
+            await deviceClient.UploadToBlobAsync(txtBlobName.Text, File.OpenWrite(txtFileName.Text));
+            MessageBox.Show("檔案已傳送成功");
+        }
+
+        /// <summary>
+        /// 檔案打開的動作
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnFile_Click(object sender, EventArgs e)
+        {
+            openFileDialog1.ShowDialog();
+        }
+
+        /// <summary>
+        /// 選擇檔案的動作
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void openFileDialog1_FileOk(object sender, CancelEventArgs e)
+        {
+            txtFileName.Text = openFileDialog1.FileName;
+        }
+
+        /// <summary>
         /// 傳送訊息至Azure IoT Hub之中
         /// </summary>
         /// <param name="sender"></param>
@@ -117,7 +154,6 @@ namespace IoT_Simulator
                 new DeviceAuthenticationWithRegistrySymmetricKey(strDeviceId, strDeviceKey));
 
             await deviceClient.SendEventAsync(new Microsoft.Azure.Devices.Client.Message(Encoding.UTF8.GetBytes(strJsonMessage)));
-
             MessageBox.Show("訊息已傳送成功");
         }
 

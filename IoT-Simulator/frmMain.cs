@@ -115,8 +115,11 @@ namespace IoT_Simulator
             DeviceClient deviceClient = DeviceClient.Create(strIoTHubUrl,
                 new DeviceAuthenticationWithRegistrySymmetricKey(strDeviceId, strDeviceKey));
 
-            await deviceClient.UploadToBlobAsync(txtBlobName.Text, File.OpenWrite(txtFileName.Text));
-            MessageBox.Show("檔案已傳送成功");
+            using (var fileStream = new FileStream(txtFileName.Text, FileMode.Open, FileAccess.Read))
+            {
+                await deviceClient.UploadToBlobAsync(txtBlobName.Text, fileStream);
+                MessageBox.Show("檔案已傳送成功");
+            }
         }
 
         /// <summary>

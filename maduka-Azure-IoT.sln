@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.26228.4
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WebJob", "WebJob", "{ACF2B877-7B45-4C03-B918-177B62CB5080}"
 EndProject
@@ -20,6 +20,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IoT-WebAppGateWay", "WebApp\IoT-WebAppGateWay\IoT-WebAppGateWay.csproj", "{B4920A76-F4F8-4656-BC38-3ABEAB277C9C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JobHeartBeatProcessor", "WebJob\JobHeartBeatProcessor\JobHeartBeatProcessor.csproj", "{28B80F33-43BF-4C05-AAC8-0F9CD29C913B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JobServiceBusProcessor", "WebJob\JobServiceBusProcessor\JobServiceBusProcessor.csproj", "{89A7B376-6EC6-48CC-ACE5-DBDDC0D70325}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -47,6 +49,10 @@ Global
 		{28B80F33-43BF-4C05-AAC8-0F9CD29C913B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{28B80F33-43BF-4C05-AAC8-0F9CD29C913B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{28B80F33-43BF-4C05-AAC8-0F9CD29C913B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{89A7B376-6EC6-48CC-ACE5-DBDDC0D70325}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{89A7B376-6EC6-48CC-ACE5-DBDDC0D70325}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{89A7B376-6EC6-48CC-ACE5-DBDDC0D70325}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{89A7B376-6EC6-48CC-ACE5-DBDDC0D70325}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -57,6 +63,7 @@ Global
 		{62C86145-9E5C-4D50-B367-B22A80F6C3EE} = {4339BE1C-99FF-4312-8AC3-1C4595717D82}
 		{B4920A76-F4F8-4656-BC38-3ABEAB277C9C} = {592639C6-1CCB-4185-AB89-9BF25C2C604E}
 		{28B80F33-43BF-4C05-AAC8-0F9CD29C913B} = {ACF2B877-7B45-4C03-B918-177B62CB5080}
+		{89A7B376-6EC6-48CC-ACE5-DBDDC0D70325} = {ACF2B877-7B45-4C03-B918-177B62CB5080}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		EnterpriseLibraryConfigurationToolBinariesPathV6 = packages\EnterpriseLibrary.TransientFaultHandling.6.0.1304.0\lib\portable-net45+win+wp8

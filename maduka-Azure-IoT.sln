@@ -23,6 +23,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JobHeartBeatProcessor", "We
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JobServiceBusProcessor", "WebJob\JobServiceBusProcessor\JobServiceBusProcessor.csproj", "{89A7B376-6EC6-48CC-ACE5-DBDDC0D70325}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Mobile", "Mobile", "{37030D56-8B11-4FE5-A971-E745FDA5BCF1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "appNotification", "Mobile\appNotification\appNotification.csproj", "{0F53E9DC-767E-4D7A-853E-E03ACA2033A9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -53,6 +57,12 @@ Global
 		{89A7B376-6EC6-48CC-ACE5-DBDDC0D70325}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{89A7B376-6EC6-48CC-ACE5-DBDDC0D70325}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{89A7B376-6EC6-48CC-ACE5-DBDDC0D70325}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0F53E9DC-767E-4D7A-853E-E03ACA2033A9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0F53E9DC-767E-4D7A-853E-E03ACA2033A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0F53E9DC-767E-4D7A-853E-E03ACA2033A9}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{0F53E9DC-767E-4D7A-853E-E03ACA2033A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0F53E9DC-767E-4D7A-853E-E03ACA2033A9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0F53E9DC-767E-4D7A-853E-E03ACA2033A9}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -64,6 +74,7 @@ Global
 		{B4920A76-F4F8-4656-BC38-3ABEAB277C9C} = {592639C6-1CCB-4185-AB89-9BF25C2C604E}
 		{28B80F33-43BF-4C05-AAC8-0F9CD29C913B} = {ACF2B877-7B45-4C03-B918-177B62CB5080}
 		{89A7B376-6EC6-48CC-ACE5-DBDDC0D70325} = {ACF2B877-7B45-4C03-B918-177B62CB5080}
+		{0F53E9DC-767E-4D7A-853E-E03ACA2033A9} = {37030D56-8B11-4FE5-A971-E745FDA5BCF1}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		EnterpriseLibraryConfigurationToolBinariesPathV6 = packages\EnterpriseLibrary.TransientFaultHandling.6.0.1304.0\lib\portable-net45+win+wp8

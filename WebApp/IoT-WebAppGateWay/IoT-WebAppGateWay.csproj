@@ -241,6 +241,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Service References\Application Insights\ConnectedService.json" />
+    <None Include="Properties\PublishProfiles\KnetIoTGateway - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\KnetIoTGateway - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\UnicornGateway - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\UnicornGateway - Web Deploy.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -8,6 +8,7 @@ using System.Configuration;
 using System.IO;
 using Newtonsoft.Json;
 using System.Data.SqlClient;
+using Microsoft.Azure.NotificationHubs;
 
 namespace JobServiceBusProcessor
 {
@@ -43,12 +44,16 @@ namespace JobServiceBusProcessor
                     {
                         var msg = r.ReadToEnd();
 
-                        msg = msg.Replace(@"@string3http://schemas.microsoft.com/2003/10/Serialization/�s", "");
+                        msg = msg.Replace(@"@string3http://schemas.microsoft.com/2003/10/Serialization/�", "");
+                        msg = msg.Substring(1, msg.Length - 1);
 
                         Models.SensorData obj = JsonConvert.DeserializeObject<Models.SensorData>(msg);
 
                         Console.WriteLine("Body: " + msg);
                         Console.WriteLine("MessageID: " + message.MessageId);
+
+                        SendNotificationAsync("alert!!" + msg);
+
                         message.Complete();
                     }
 
@@ -73,6 +78,28 @@ namespace JobServiceBusProcessor
                     //    SqlCmd.Connection.Close();
                 }
             }, options);
+        }
+
+        private static async Task SendNotificationAsync(string msg)
+        {
+            // await SendWindowsNotificationAsync(msg);
+            await SendAndroidNotificationAsync(msg);
+        }
+        private static async Task SendWindowsNotificationAsync(string msg)
+        {
+            NotificationHubClient hub = NotificationHubClient
+                .CreateClientFromConnectionString(strNotificationConnectionString, strNotificationHubName);
+            var toast = $"<toast launch=\"launch_arguments\"><visual><binding template=\"ToastText01\"><text id=\"1\">{msg}</text></binding></visual></toast>";
+            var results = await hub.SendWindowsNativeNotificationAsync(toast);
+        }
+        private static async Task SendAndroidNotificationAsync(string msg)
+        {
+            NotificationHubClient hub = NotificationHubClient
+                .CreateClientFromConnectionString(strNotificationConnectionString, strNotificationHubName);
+            Newtonsoft.Json.Linq.JObject o = JsonConvert.DeserializeObject(msg) as Newtonsoft.Json.Linq.JObject;
+            var toast = "{data:{message:'{device} alert at {time}'}}".Replace("{device}", (string)o["deviceid"]).Replace("{time}", (string)o["time"]);
+            var results = await hub.SendGcmNativeNotificationAsync(toast);
+
         }
     }
 }

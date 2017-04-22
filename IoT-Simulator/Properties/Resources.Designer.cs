@@ -63,10 +63,10 @@ namespace IoT_Simulator.Properties {
         /// <summary>
         ///   查詢類似 {
         ///  &quot;DeviceId&quot; : &quot;{0}&quot;,
-        ///  &quot;SendDate&quot; : &quot;{1}&quot;,
-        ///  &quot;Message&quot; : &quot;Hello, Azure IoT Hub&quot;,
-        ///  &quot;Sender&quot; : &quot;maduka&quot;,
-        ///  &quot;Type&quot; : &quot;Alert&quot;
+        ///  &quot;SendDateTime&quot; : &quot;{1}&quot;,
+        ///  &quot;Temperature&quot; : &quot;25&quot;,
+        ///  &quot;Humidity&quot; : &quot;40&quot;,
+        ///  &quot;PM25&quot; : &quot;3.0&quot;
         ///} 的當地語系化字串。
         /// </summary>
         internal static string IoTMessage {

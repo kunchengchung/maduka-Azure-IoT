@@ -120,10 +120,10 @@
   <data name="IoTMessage" xml:space="preserve">
     <value>{
   "DeviceId" : "{0}",
-  "SendDate" : "{1}",
-  "Message" : "Hello, Azure IoT Hub",
-  "Sender" : "maduka",
-  "Type" : "Alert"
+  "SendDateTime" : "{1}",
+  "Temperature" : "25",
+  "Humidity" : "40",
+  "PM25" : "3.0"
 }</value>
   </data>
 </root>

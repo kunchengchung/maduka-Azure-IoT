@@ -8,6 +8,9 @@ namespace IoT_Simulator
     public class MessageModel
     {
         public string DeviceId { get; set; }
-        public string MessageContent { get; set; }
+        public double Temperature { get; set; }
+        public double Humidity { get; set; }
+        public double PM25 { get; set; }
+        public DateTime SendDateTime { get; set; }
     }
 }

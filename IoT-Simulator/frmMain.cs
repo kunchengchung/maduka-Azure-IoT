@@ -65,10 +65,15 @@ namespace IoT_Simulator
                 txtDeviceKey.Text = objDevice.Authentication.SymmetricKey.PrimaryKey;
 
                 // 放入傳送訊息用的內容
-                string strMessage = IoT_Simulator.Properties.Resources.IoTMessage;
-                strMessage = strMessage.Replace("{0}", txtDeviceId.Text);
-                strMessage = strMessage.Replace("{1}", DateTime.UtcNow.ToString("yyyy/MM/dd"));
-                txtMessage.Text = strMessage;
+                MessageModel objMsg = new MessageModel()
+                {
+                    DeviceId = txtDeviceId.Text,
+                    Humidity = 40,
+                    PM25 = 10,
+                    SendDateTime = DateTime.Now,
+                    Temperature = 60,
+                };
+                txtMessage.Text = JsonConvert.SerializeObject(objMsg);
             }
             else
             {
@@ -168,11 +173,7 @@ namespace IoT_Simulator
         private void btnSendToWebAPI_Click(object sender, EventArgs e)
         {
             // 因為只要送到WebAPI，所以只要訊息跟裝置代碼就夠了
-            MessageModel objMsg = new MessageModel()
-            {
-                DeviceId = txtDeviceId.Text,
-                MessageContent = txtMessage.Text,
-            };
+            MessageModel objMsg = JsonConvert.DeserializeObject<MessageModel>(txtMessage.Text);
 
             // 放在網路上的WebApp的Url
             string strUrl = "[WebAPI的Url]";

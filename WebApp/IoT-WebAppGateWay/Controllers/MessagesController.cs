@@ -14,8 +14,8 @@ namespace IoT_WebAppGateWay.Controllers
 {
     public class MessagesController : ApiController
     {
-        static string iotHubUri = "madukaIoTHub.azure-devices.net";
-        static string redisCacheConnectionString = "unicorncache.redis.cache.windows.net:6380,password=EC98PtFdaUrRFkcfynfWeXjCfvNzUA/DMxLIrKtGK9M=,ssl=True,abortConnect=False";
+        static string iotHubUri = "[IoT Hub的Url]";
+        static string redisCacheConnectionString = "[Redis Cache連接字串]";
 
         // 開啟Redis Cache的連線
         private static Lazy<ConnectionMultiplexer> lazyConnection = new Lazy<ConnectionMultiplexer>(() =>

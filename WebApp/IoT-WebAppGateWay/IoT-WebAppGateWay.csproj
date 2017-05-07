@@ -193,6 +193,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Properties\PublishProfiles\" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Validation, Version=2.2.0.0, Culture=neutral, PublicKeyToken=2fc06f0d701809a7, processorArchitecture=MSIL">
@@ -241,10 +242,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Service References\Application Insights\ConnectedService.json" />
-    <None Include="Properties\PublishProfiles\KnetIoTGateway - FTP.pubxml" />
-    <None Include="Properties\PublishProfiles\KnetIoTGateway - Web Deploy.pubxml" />
-    <None Include="Properties\PublishProfiles\UnicornGateway - FTP.pubxml" />
-    <None Include="Properties\PublishProfiles\UnicornGateway - Web Deploy.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

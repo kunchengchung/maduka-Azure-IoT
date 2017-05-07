@@ -8,13 +8,14 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web.Http;
+using Newtonsoft.Json;
 
 namespace IoT_WebAppGateWay.Controllers
 {
     public class MessagesController : ApiController
     {
-        static string iotHubUri = "[IoT Hub的Url]";
-        static string redisCacheConnectionString = "[Redis Cache連接字串]";
+        static string iotHubUri = "madukaIoTHub.azure-devices.net";
+        static string redisCacheConnectionString = "unicorncache.redis.cache.windows.net:6380,password=EC98PtFdaUrRFkcfynfWeXjCfvNzUA/DMxLIrKtGK9M=,ssl=True,abortConnect=False";
 
         // 開啟Redis Cache的連線
         private static Lazy<ConnectionMultiplexer> lazyConnection = new Lazy<ConnectionMultiplexer>(() =>
@@ -35,7 +36,7 @@ namespace IoT_WebAppGateWay.Controllers
         /// </summary>
         /// <param name="value">發送物件</param>
         /// <returns>true:發送成功  false:發送失敗</returns>
-        public async Task<HttpResponseMessage> Post([FromBody]Models.Message value)
+        public async Task<HttpResponseMessage> Post(Models.Message value)
         {
             HttpStatusCode code = HttpStatusCode.OK;
             string strContent = "true";
@@ -70,7 +71,7 @@ namespace IoT_WebAppGateWay.Controllers
                         Microsoft.Azure.Devices.Client.TransportType.Amqp
                     );
 
-                    await deviceClient.SendEventAsync(new Microsoft.Azure.Devices.Client.Message(Encoding.UTF8.GetBytes(value.MessageContent)));
+                    await deviceClient.SendEventAsync(new Microsoft.Azure.Devices.Client.Message(Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(value))));
                 }
                 else
                 {

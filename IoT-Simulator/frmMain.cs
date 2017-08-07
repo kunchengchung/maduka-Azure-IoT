@@ -12,6 +12,7 @@ using System.Text;
 using System.Windows.Forms;
 using Newtonsoft.Json;
 using System.Threading.Tasks;
+using System.Configuration;
 
 namespace IoT_Simulator
 {
@@ -20,11 +21,11 @@ namespace IoT_Simulator
         /// <summary>
         /// 定義IoT Hub的連線字串
         /// </summary>
-        string strIoTHubConnectionString = "[請在這裡置換IoT Hub的Connection String]";
+        string strIoTHubConnectionString = ConfigurationManager.ConnectionStrings["IoTHub"].ToString();
         /// <summary>
         /// 定義IoT Hub的Url
         /// </summary>
-        string strIoTHubUrl = "[請在這裡置換IoT Hub的Url]";
+        string strIoTHubUrl = ConfigurationManager.AppSettings["IoTHubUrl"].ToString();
 
         public frmMain()
         {

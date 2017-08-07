@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.Azure.WebJobs;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.ServiceBus.Messaging;
+using System.Configuration;
 
 namespace JobProcessor
 {
@@ -16,18 +17,16 @@ namespace JobProcessor
         // AzureWebJobsDashboard and AzureWebJobsStorage
         static void Main()
         {
-            string iotHubConnectionString = "[IoT Hub連接字串]";
+            string iotHubConnectionString = ConfigurationManager.ConnectionStrings["Microsoft.Azure.IoT.ConnectionString"].ToString();
             string iotHubD2cEndpoint = "messages/events";
-            string strGroupName = "[取用者群組的名稱]";
-            IoTProcessor.StorageConnectionString = "[儲存體的連接字串]";
-            // IoTProcessor.ServiceBusConnectionString = "[ServiceBus連線字串]";
-            // IoTProcessor.DatabaseConnectString = "[資料庫連線字串]";
-            string strBlobName = "messages-events";
+            string strGroupName = ConfigurationManager.AppSettings["GroupName"].ToString();
+            IoTProcessor.StorageConnectionString = ConfigurationManager.ConnectionStrings["Microsoft.Azure.IoT.Storage.ConnectionString"].ToString();
+            string strContainerName = ConfigurationManager.AppSettings["ContainerName"].ToString();
 
             string eventProcessorHostName = Guid.NewGuid().ToString();
             EventProcessorHost eventProcessorHost = 
                 new EventProcessorHost(eventProcessorHostName, iotHubD2cEndpoint, strGroupName, 
-                iotHubConnectionString, IoTProcessor.StorageConnectionString, strBlobName);
+                iotHubConnectionString, IoTProcessor.StorageConnectionString, strContainerName);
 
             eventProcessorHost.RegisterEventProcessorAsync<IoTProcessor>().Wait();
             eventProcessorHost.UnregisterEventProcessorAsync().Wait();

@@ -9,19 +9,18 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web.Http;
 using Newtonsoft.Json;
+using System.Configuration;
 
 namespace IoT_WebAppGateWay.Controllers
 {
     public class MessagesController : ApiController
     {
-        static string iotHubUri = "[IoT Hub的Url]";
-        static string redisCacheConnectionString = "[Redis Cache連接字串]";
+        static string iotHubUri = ConfigurationManager.AppSettings["IoTHubUrl"].ToString();
+        static string redisCacheConnectionString = ConfigurationManager.ConnectionStrings["RedisCache"].ToString();
 
         // 開啟Redis Cache的連線
-        private static Lazy<ConnectionMultiplexer> lazyConnection = new Lazy<ConnectionMultiplexer>(() =>
-        {
-            return ConnectionMultiplexer.Connect(redisCacheConnectionString);
-        });
+        private static Lazy<ConnectionMultiplexer> lazyConnection =
+            new Lazy<ConnectionMultiplexer>(() => { return ConnectionMultiplexer.Connect(redisCacheConnectionString); });
 
         public static ConnectionMultiplexer objConn
         {

@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26403.7
+VisualStudioVersion = 15.0.26430.16
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WebJob", "WebJob", "{ACF2B877-7B45-4C03-B918-177B62CB5080}"
 EndProject
@@ -34,6 +34,13 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Components", "Components", "{4C3B933D-6311-4537-95FE-9A2313FA8F87}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Sensors.Dht", "Devices\Components\Sensors.Dht\Sensors.Dht.vcxproj", "{2CD70A4F-9EED-4CDA-9E07-1A2BD33B4976}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Database", "Database", "{CE518F15-644A-4C2A-83A1-C813F931E478}"
+	ProjectSection(SolutionItems) = preProject
+		Database\DeviceData.sql = Database\DeviceData.sql
+		Database\IoTDevices.sql = Database\IoTDevices.sql
+		Database\StreamAnalytics.sql = Database\StreamAnalytics.sql
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

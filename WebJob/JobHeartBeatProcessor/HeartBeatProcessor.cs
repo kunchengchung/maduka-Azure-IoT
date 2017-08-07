@@ -23,12 +23,9 @@ namespace JobHeartBeatProcessor
             Console.WriteLine("All Devices Count:" + devicesList.Count.ToString());
 
             // 過濾出離線的裝置資料
-            List<DeviceEntity> offlineDevices = devicesList.FindAll(
-                delegate (DeviceEntity device)
-                {
-                    return device.ConnectionState == "Disconnected" && device.State == "Enabled";
-                }
-            );
+            List<DeviceEntity> offlineDevices = devicesList
+                .Where(x => x.ConnectionState == "Disconnected" && x.State == "Enabled")
+                .ToList();
             Console.WriteLine("Offline Devices Count:" + offlineDevices.Count.ToString());
 
             // 取出離線的裝置客戶資料

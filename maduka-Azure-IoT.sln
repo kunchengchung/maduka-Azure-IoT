@@ -38,7 +38,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Database", "Database", "{CE518F15-644A-4C2A-83A1-C813F931E478}"
 	ProjectSection(SolutionItems) = preProject
 		Database\DeviceData.sql = Database\DeviceData.sql
-		Database\IoTDevices.sql = Database\IoTDevices.sql
+		Database\DeviceFile.sql = Database\DeviceFile.sql
 		Database\StreamAnalytics.sql = Database\StreamAnalytics.sql
 	EndProjectSection
 EndProject

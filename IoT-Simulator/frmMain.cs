@@ -177,7 +177,7 @@ namespace IoT_Simulator
             MessageModel objMsg = JsonConvert.DeserializeObject<MessageModel>(txtMessage.Text);
 
             // 放在網路上的WebApp的Url
-            string strUrl = "[WebAPI的Url]";
+            string strUrl = ConfigurationManager.AppSettings["IoTGateway"].ToString();
 
             // 送出至WebAPI
             HttpStatusCode code = HttpStatusCode.OK;

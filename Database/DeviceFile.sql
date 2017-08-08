@@ -1,5 +1,5 @@
 
-CREATE TABLE [dbo].[IoTDevices](
+CREATE TABLE [dbo].[DeviceFile](
 	[DeviceId] [nvarchar](50) NOT NULL,
 	[DeviceKey] [nvarchar](max) NULL,
  CONSTRAINT [PK_IoTDevices] PRIMARY KEY CLUSTERED 

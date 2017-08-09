@@ -10,6 +10,7 @@ using System.IO;
 using System.Diagnostics;
 using System.Security.Cryptography;
 using Microsoft.WindowsAzure.Storage;
+using Newtonsoft.Json;
 
 namespace JobProcessor
 {
@@ -18,7 +19,6 @@ namespace JobProcessor
     {
         public static string StorageConnectionString { get; set; }
         public static string ServiceBusConnectionString { get; set; }
-        public static string DatabaseConnectString { get; set; }
 
         private CloudBlobClient blobClient;
         private CloudBlobContainer blobContainer;
@@ -31,18 +31,13 @@ namespace JobProcessor
         private Stopwatch stopwatch;
         private TimeSpan MAX_CHECKPOINT_TIME = TimeSpan.FromSeconds(5);
 
-        SqlConnection SqlConn;
-        SqlCommand SqlCmd;
-        SqlDataAdapter SqlAdp;
+        Models.IoTDbEntities objDb = new Models.IoTDbEntities();
 
         /// <summary>
         /// 初始化IoTProcessor的動作
         /// </summary>
         public IoTProcessor()
         {
-            // SqlConn = new SqlConnection(DatabaseConnectString);
-            // queueClient = QueueClient.CreateFromConnectionString(ServiceBusConnectionString, "madukaiotqueue");
-
             // 定義要將檢查點存放的Blob位置
             var storageAccount = CloudStorageAccount.Parse(StorageConnectionString);
             blobClient = storageAccount.CreateCloudBlobClient();
@@ -98,11 +93,14 @@ namespace JobProcessor
                 if (text != "")
                 {
                     // 在這裡把IoT Hub的資料抓出來, text就是從IoT Hub中取得的JSON資料字串
-                    // text = ......
+                    // 寫入到資料庫之中
                     Console.WriteLine(text);
+                    Models.DeviceData objData = JsonConvert.DeserializeObject<Models.DeviceData>(text);
+                    objDb.DeviceData.Add(objData);
+                    objDb.SaveChanges();
                 }
 
-                #region // 寫入檢查點的動作，這一段也是放在foreach中直接貼上就可以
+                // 寫入檢查點的動作，這一段也是放在foreach中直接貼上就可以
                 if (toAppend.Length + data.Length > MAX_BLOCK_SIZE || stopwatch.Elapsed > MAX_CHECKPOINT_TIME)
                 {
                     await AppendAndCheckpoint(context);
@@ -112,11 +110,9 @@ namespace JobProcessor
 
                 Console.WriteLine(string.Format("Message received.  Partition: '{0}', Data: '{1}'",
                     context.Lease.PartitionId, Encoding.UTF8.GetString(data)));
-                #endregion
             }
         }
 
-        #region // 於IoT Hub執行的過程中，寫入檢查點，避免重複讀取的動作, 這裡只要直接複製貼上就可以執行
         /// <summary>
         /// 於IoT Hub執行的過程中，寫入檢查點，避免重複讀取的動作
         /// 這裡只要直接複製貼上就可以執行
@@ -171,6 +167,5 @@ namespace JobProcessor
             currentBlockInitOffset = long.Parse(context.Lease.Offset);
             stopwatch.Restart();
         }
-        #endregion
     }
 }

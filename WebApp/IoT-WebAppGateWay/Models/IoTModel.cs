@@ -13,6 +13,7 @@ namespace IoT_WebAppGateWay.Models
         }
 
         public virtual DbSet<DeviceFile> DeviceFile { get; set; }
+        public virtual DbSet<DeviceData> DeviceData { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

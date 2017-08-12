@@ -9,15 +9,20 @@ using System.IO;
 using Newtonsoft.Json;
 using System.Data.SqlClient;
 using Microsoft.Azure.NotificationHubs;
+using SendGrid;
+using SendGrid.Helpers.Mail;
 
 namespace JobServiceBusProcessor
 {
     public class ServiceBusProcessor
     {
-        private static string strServiceBusConnectinString = ConfigurationSettings.AppSettings["ServiceBusConnectionString"].ToString();
-        private static string strQueueName = ConfigurationSettings.AppSettings["ServiceBusQueue"].ToString();
-        private static string strNotificationConnectionString = ConfigurationSettings.AppSettings["NotificationConnectionString"].ToString();
-        private static string strNotificationHubName = ConfigurationSettings.AppSettings["NotificationHubName"].ToString();
+        private static string strServiceBusConnectinString = ConfigurationManager.AppSettings["ServiceBusConnectionString"].ToString();
+        private static string strQueueName = ConfigurationManager.AppSettings["ServiceBusQueue"].ToString();
+        private static string strNotificationConnectionString = ConfigurationManager.AppSettings["NotificationConnectionString"].ToString();
+        private static string strNotificationHubName = ConfigurationManager.AppSettings["NotificationHubName"].ToString();
+        private static string strSendGridKey = ConfigurationManager.AppSettings["SendGridKey"].ToString();
+        private static string strSendGridFromMail = ConfigurationManager.AppSettings["SendGridFromMail"].ToString();
+        private static List<string> strSendGridMailList = ConfigurationManager.AppSettings["SendGridMailList"].ToString().Split(";".ToCharArray()).ToList();
 
         //private static SqlCommand SqlCmd = new SqlCommand();
         //private static SqlConnection SqlConn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ToString());
@@ -52,8 +57,11 @@ namespace JobServiceBusProcessor
                         Console.WriteLine("Body: " + msg);
                         Console.WriteLine("MessageID: " + message.MessageId);
 
+                        // 進行訊息的推送
                         SendNotificationAsync("alert!!" + msg);
 
+                        // 透過SendGrid的email發送
+                        SendGridMail("alert!!", msg);
                         message.Complete();
                     }
 
@@ -72,19 +80,27 @@ namespace JobServiceBusProcessor
                     }
 
                     message.Abandon();
-                    //message.Complete();
-
-                    //if (SqlCmd.Connection.State == System.Data.ConnectionState.Open)
-                    //    SqlCmd.Connection.Close();
                 }
             }, options);
         }
 
+        #region // SendNotificationAsync
+        /// <summary>
+        /// 進行訊息推播的動作
+        /// </summary>
+        /// <param name="msg"></param>
+        /// <returns></returns>
         private static async Task SendNotificationAsync(string msg)
         {
-            // await SendWindowsNotificationAsync(msg);
+            await SendWindowsNotificationAsync(msg);
             await SendAndroidNotificationAsync(msg);
         }
+
+        /// <summary>
+        /// 傳送Windows Phone的訊息推播
+        /// </summary>
+        /// <param name="msg"></param>
+        /// <returns></returns>
         private static async Task SendWindowsNotificationAsync(string msg)
         {
             NotificationHubClient hub = NotificationHubClient
@@ -92,6 +108,12 @@ namespace JobServiceBusProcessor
             var toast = $"<toast launch=\"launch_arguments\"><visual><binding template=\"ToastText01\"><text id=\"1\">{msg}</text></binding></visual></toast>";
             var results = await hub.SendWindowsNativeNotificationAsync(toast);
         }
+
+        /// <summary>
+        /// 傳送Android的訊息推播
+        /// </summary>
+        /// <param name="msg"></param>
+        /// <returns></returns>
         private static async Task SendAndroidNotificationAsync(string msg)
         {
             NotificationHubClient hub = NotificationHubClient
@@ -99,7 +121,32 @@ namespace JobServiceBusProcessor
             Newtonsoft.Json.Linq.JObject o = JsonConvert.DeserializeObject(msg) as Newtonsoft.Json.Linq.JObject;
             var toast = "{data:{message:'{device} alert at {time}'}}".Replace("{device}", (string)o["deviceid"]).Replace("{time}", (string)o["time"]);
             var results = await hub.SendGcmNativeNotificationAsync(toast);
-
         }
+        #endregion
+
+        #region // SendGrid
+        /// <summary>
+        /// 透過SendGrid寄送信件
+        /// </summary>
+        /// <param name="strSubject"></param>
+        /// <param name="strContent"></param>
+        /// <returns></returns>
+        private static async Task SendGridMail(string strSubject, string strContent)
+        {
+            var apiKey = strSendGridKey;
+            var client = new SendGridClient(apiKey);
+            var msg = new SendGridMessage()
+            {
+                From = new EmailAddress(strSendGridFromMail),
+                Subject = strSubject,
+                PlainTextContent = strContent,
+                HtmlContent = $"<strong>{strContent}</strong>"
+            };
+            for (int i = 0; i < strSendGridMailList.Count; i++)
+                msg.AddTo(new EmailAddress(strSendGridMailList[i], strSendGridMailList[i]));
+
+            var response = await client.SendEmailAsync(msg);
+        }
+        #endregion
     }
 }

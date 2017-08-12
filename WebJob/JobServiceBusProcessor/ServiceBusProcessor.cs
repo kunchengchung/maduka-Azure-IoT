@@ -24,15 +24,8 @@ namespace JobServiceBusProcessor
         private static string strSendGridFromMail = ConfigurationManager.AppSettings["SendGridFromMail"].ToString();
         private static List<string> strSendGridMailList = ConfigurationManager.AppSettings["SendGridMailList"].ToString().Split(";".ToCharArray()).ToList();
 
-        //private static SqlCommand SqlCmd = new SqlCommand();
-        //private static SqlConnection SqlConn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ToString());
-
         public static void LookupNotification()
         {
-            // 開啟資料庫
-            //SqlCmd.Connection = SqlConn;
-            //SqlCmd.Connection.Open();
-
             // 取得Queue裡的資料
             QueueClient qc = QueueClient.CreateFromConnectionString(strServiceBusConnectinString, strQueueName);
             OnMessageOptions options = new OnMessageOptions();
@@ -62,6 +55,8 @@ namespace JobServiceBusProcessor
 
                         // 透過SendGrid的email發送
                         SendGridMail("alert!!", msg);
+
+                        // 設定Queue裡的訊息已被讀取
                         message.Complete();
                     }
 

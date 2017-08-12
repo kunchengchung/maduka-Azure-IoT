@@ -149,11 +149,54 @@ namespace IoT_Simulator
         }
 
         /// <summary>
-        /// 傳送訊息至Azure IoT Hub之中
+        /// 發送單一訊習
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private async void btnSend_Click(object sender, EventArgs e)
+        {
+            if (rbnIoTHub.Checked)
+            {
+                this.SendToIoTHub(true);
+            }
+            else
+            {
+                this.SendToWebAPI(true);
+            }
+        }
+
+        /// <summary>
+        /// 使用Timer作發送的動作
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnSendAndStop_Click(object sender, EventArgs e)
+        {
+            btnSendAndStop.Text = (tiSend.Enabled) ? "Send with timer" : "Stop";
+            tiSend.Enabled = !tiSend.Enabled;
+        }
+
+        /// <summary>
+        /// Timer被啟動的動作
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void tiSend_Tick(object sender, EventArgs e)
+        {
+            if (rbnIoTHub.Checked)
+            {
+                this.SendToIoTHub(false);
+            }
+            else
+            {
+                this.SendToWebAPI(false);
+            }
+        }
+
+        /// <summary>
+        /// 傳送訊息至Azure IoT Hub之中
+        /// </summary>
+        private async void SendToIoTHub(bool blShowMessage)
         {
             string strJsonMessage = txtMessage.Text;
             string strDeviceId = txtDeviceId.Text;
@@ -162,8 +205,22 @@ namespace IoT_Simulator
             DeviceClient deviceClient = DeviceClient.Create(strIoTHubUrl,
                 new DeviceAuthenticationWithRegistrySymmetricKey(strDeviceId, strDeviceKey));
 
-            await deviceClient.SendEventAsync(new Microsoft.Azure.Devices.Client.Message(Encoding.UTF8.GetBytes(strJsonMessage)));
-            MessageBox.Show("訊息已傳送成功");
+            try
+            {
+                await deviceClient.SendEventAsync(new Microsoft.Azure.Devices.Client.Message(Encoding.UTF8.GetBytes(strJsonMessage)));
+
+                if (blShowMessage)
+                    MessageBox.Show("訊息已傳送成功");
+                else
+                    lblSendMessage.Text = "訊息已傳送成功";
+            }
+            catch   (Exception e)
+            {
+                if (blShowMessage)
+                    MessageBox.Show("發送失敗," + e.Message);
+                else
+                    lblSendMessage.Text = "發送失敗," + e.Message;
+            }
         }
 
         /// <summary>
@@ -171,7 +228,7 @@ namespace IoT_Simulator
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void btnSendToWebAPI_Click(object sender, EventArgs e)
+        private void SendToWebAPI(bool blShowMessage)
         {
             // 因為只要送到WebAPI，所以只要訊息跟裝置代碼就夠了
             MessageModel objMsg = JsonConvert.DeserializeObject<MessageModel>(txtMessage.Text);
@@ -181,15 +238,21 @@ namespace IoT_Simulator
 
             // 送出至WebAPI
             HttpStatusCode code = HttpStatusCode.OK;
-            string strResponse = CallAPI(strUrl, "POST", JsonConvert.SerializeObject(objMsg) , out code);
+            string strResponse = CallAPI(strUrl, "POST", JsonConvert.SerializeObject(objMsg), out code);
 
             if (code == HttpStatusCode.OK)
             {
-                MessageBox.Show("發送完成");
+                if (blShowMessage)
+                    MessageBox.Show("發送完成");
+                else
+                    lblSendMessage.Text = "訊息已傳送成功";
             }
             else
             {
-                MessageBox.Show("發送失敗," + strResponse);
+                if (blShowMessage)
+                    MessageBox.Show("發送失敗," + strResponse);
+                else
+                    lblSendMessage.Text = "發送失敗," + strResponse;
             }
         }
 

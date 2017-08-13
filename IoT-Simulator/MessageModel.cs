@@ -13,4 +13,11 @@ namespace IoT_Simulator
         public double PM25 { get; set; }
         public DateTime SendDateTime { get; set; }
     }
+
+    public class CallMethodModel
+    {
+        public string DeviceId { get; set; }
+        public string Status { get; set; }
+        public int OperationMinutes { get; set; }
+    }
 }

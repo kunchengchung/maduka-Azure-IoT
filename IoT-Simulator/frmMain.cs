@@ -26,15 +26,18 @@ namespace IoT_Simulator
         /// 定義IoT Hub的Url
         /// </summary>
         string strIoTHubUrl = ConfigurationManager.AppSettings["IoTHubUrl"].ToString();
+        /// <summary>
+        /// 定義裝置物件
+        /// </summary>
+        DeviceClient deviceClient = null;
 
         public frmMain()
         {
             InitializeComponent();
         }
 
-        private void frmMain_Load(object sender, EventArgs e)
+        private async void frmMain_Load(object sender, EventArgs e)
         {
-
         }
 
         /// <summary>
@@ -64,6 +67,9 @@ namespace IoT_Simulator
             if (objDevice != null)
             {
                 txtDeviceKey.Text = objDevice.Authentication.SymmetricKey.PrimaryKey;
+
+                // 指定裝置物件的資訊，並建立連線狀態
+                deviceClient = DeviceClient.CreateFromConnectionString($"HostName={strIoTHubUrl};DeviceId={txtDeviceId.Text};SharedAccessKey={txtDeviceKey.Text}", Microsoft.Azure.Devices.Client.TransportType.Amqp);
 
                 // 放入傳送訊息用的內容
                 MessageModel objMsg = new MessageModel()
@@ -100,6 +106,7 @@ namespace IoT_Simulator
             {
                 await registryManager.RemoveDeviceAsync(objDevice);
                 txtDeviceKey.Text = "";
+                deviceClient = null;
                 MessageBox.Show("該裝置已解除註冊");
             }
             else
@@ -118,8 +125,9 @@ namespace IoT_Simulator
             string strDeviceId = txtDeviceId.Text;
             string strDeviceKey = txtDeviceKey.Text;
 
-            DeviceClient deviceClient = DeviceClient.Create(strIoTHubUrl,
-                new DeviceAuthenticationWithRegistrySymmetricKey(strDeviceId, strDeviceKey));
+            // 如果裝置未註冊，就手動進行建立連線的動作
+            if (deviceClient == null)
+                deviceClient = DeviceClient.CreateFromConnectionString($"HostName={strIoTHubUrl};DeviceId={txtDeviceId.Text};SharedAccessKey={txtDeviceKey.Text}", Microsoft.Azure.Devices.Client.TransportType.Amqp);
 
             using (var fileStream = new FileStream(txtFileName.Text, FileMode.Open, FileAccess.Read))
             {
@@ -202,8 +210,8 @@ namespace IoT_Simulator
             string strDeviceId = txtDeviceId.Text;
             string strDeviceKey = txtDeviceKey.Text;
 
-            DeviceClient deviceClient = DeviceClient.Create(strIoTHubUrl,
-                new DeviceAuthenticationWithRegistrySymmetricKey(strDeviceId, strDeviceKey));
+            if (deviceClient == null)
+                deviceClient = DeviceClient.CreateFromConnectionString($"HostName={strIoTHubUrl};DeviceId={txtDeviceId.Text};SharedAccessKey={txtDeviceKey.Text}", Microsoft.Azure.Devices.Client.TransportType.Amqp);
 
             try
             {
@@ -272,7 +280,9 @@ namespace IoT_Simulator
         /// <returns></returns>
         public async Task Receive()
         {
-            DeviceClient deviceClient = DeviceClient.CreateFromConnectionString($"HostName={strIoTHubUrl};DeviceId={txtDeviceId.Text};SharedAccessKey={txtDeviceKey.Text}", Microsoft.Azure.Devices.Client.TransportType.Amqp);
+            if (deviceClient == null)
+                deviceClient = DeviceClient.CreateFromConnectionString($"HostName={strIoTHubUrl};DeviceId={txtDeviceId.Text};SharedAccessKey={txtDeviceKey.Text}", Microsoft.Azure.Devices.Client.TransportType.Amqp);
+
             Microsoft.Azure.Devices.Client.Message receivedMessage;
             string messageData;
             while (true)
@@ -282,7 +292,17 @@ namespace IoT_Simulator
                 if (receivedMessage != null)
                 {
                     messageData = Encoding.UTF8.GetString(receivedMessage.GetBytes());
+
+                    // 取得回傳的Key與Value
+                    foreach (var item in receivedMessage.Properties)
+                    {
+                        var strKey = item.Key;
+                        var strValue = item.Value;
+                    }
+
+                    // 標示訊息已被讀取
                     await deviceClient.CompleteAsync(receivedMessage);
+
                     MessageBox.Show(messageData);
                 }
             }
@@ -318,6 +338,47 @@ namespace IoT_Simulator
             }
 
             return strReturn;
+        }
+
+        /// <summary>
+        /// 註冊Call Method
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private async void btnRegistryMethod_Click(object sender, EventArgs e)
+        {
+            if (deviceClient == null)
+                deviceClient = DeviceClient.CreateFromConnectionString($"HostName={strIoTHubUrl};DeviceId={txtDeviceId.Text};SharedAccessKey={txtDeviceKey.Text}", Microsoft.Azure.Devices.Client.TransportType.Amqp);
+
+            // 註冊回傳事件的動作
+            await deviceClient.SetMethodHandlerAsync(txtMethodName.Text, OnCallMethod, null);
+
+            // 放入被IoT呼叫後會回傳的訊息內容
+            CallMethodModel objModel = new CallMethodModel()
+            {
+                DeviceId = txtDeviceId.Text,
+                OperationMinutes = 135,
+                Status = "Online",
+            };
+            txtCallMethodReturnValue.Text = JsonConvert.SerializeObject(objModel);
+        }
+
+        /// <summary>
+        /// 當IoT Call Method時，回傳的動作
+        /// </summary>
+        /// <param name="request"></param>
+        /// <param name="userContext"></param>
+        /// <returns></returns>
+        private async Task<MethodResponse> OnCallMethod(MethodRequest request, object userContext)
+        {           
+            // 取得從IoT Hub上傳入的參數
+            string strInput = request.DataAsJson;
+
+            // 取得設定要直接回傳的值
+            string strReturnValue = txtCallMethodReturnValue.Text;
+
+            // 進行回傳動作
+            return new MethodResponse(Encoding.UTF8.GetBytes(strReturnValue), 200);
         }
     }
 }

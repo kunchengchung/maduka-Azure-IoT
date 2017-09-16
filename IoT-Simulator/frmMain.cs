@@ -75,10 +75,10 @@ namespace IoT_Simulator
                 MessageModel objMsg = new MessageModel()
                 {
                     DeviceId = txtDeviceId.Text,
-                    Humidity = 40,
-                    PM25 = 10,
+                    Humidity = new Random().Next(30, 60),
+                    PM25 = new Random().Next(0, 30),
                     SendDateTime = DateTime.Now,
-                    Temperature = 60,
+                    Temperature = new Random().Next(25, 35),
                 };
                 txtMessage.Text = JsonConvert.SerializeObject(objMsg);
             }
@@ -164,13 +164,9 @@ namespace IoT_Simulator
         private async void btnSend_Click(object sender, EventArgs e)
         {
             if (rbnIoTHub.Checked)
-            {
                 this.SendToIoTHub(true);
-            }
             else
-            {
                 this.SendToWebAPI(true);
-            }
         }
 
         /// <summary>
@@ -191,14 +187,20 @@ namespace IoT_Simulator
         /// <param name="e"></param>
         private void tiSend_Tick(object sender, EventArgs e)
         {
+            MessageModel objMsg = new MessageModel()
+            {
+                DeviceId = txtDeviceId.Text,
+                Humidity = new Random().Next(30, 60),
+                PM25 = new Random().Next(0, 30),
+                SendDateTime = DateTime.Now,
+                Temperature = new Random().Next(25, 35),
+            };
+            txtMessage.Text = JsonConvert.SerializeObject(objMsg);
+
             if (rbnIoTHub.Checked)
-            {
                 this.SendToIoTHub(false);
-            }
             else
-            {
                 this.SendToWebAPI(false);
-            }
         }
 
         /// <summary>
@@ -378,6 +380,8 @@ namespace IoT_Simulator
             string strReturnValue = txtCallMethodReturnValue.Text;
 
             // 進行回傳動作
+            MessageBox.Show(strInput);
+
             return new MethodResponse(Encoding.UTF8.GetBytes(strReturnValue), 200);
         }
     }

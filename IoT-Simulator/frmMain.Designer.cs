@@ -64,10 +64,9 @@
             // btnRegistry
             // 
             this.btnRegistry.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnRegistry.Location = new System.Drawing.Point(1242, 20);
-            this.btnRegistry.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
+            this.btnRegistry.Location = new System.Drawing.Point(573, 10);
             this.btnRegistry.Name = "btnRegistry";
-            this.btnRegistry.Size = new System.Drawing.Size(186, 46);
+            this.btnRegistry.Size = new System.Drawing.Size(86, 23);
             this.btnRegistry.TabIndex = 0;
             this.btnRegistry.Text = "Registry";
             this.btnRegistry.UseVisualStyleBackColor = true;
@@ -77,50 +76,46 @@
             // 
             this.txtDeviceId.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtDeviceId.Location = new System.Drawing.Point(167, 24);
-            this.txtDeviceId.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
+            this.txtDeviceId.Location = new System.Drawing.Point(77, 12);
             this.txtDeviceId.Name = "txtDeviceId";
-            this.txtDeviceId.Size = new System.Drawing.Size(1066, 36);
+            this.txtDeviceId.Size = new System.Drawing.Size(494, 22);
             this.txtDeviceId.TabIndex = 1;
+            this.txtDeviceId.Text = "DemoDevice";
             // 
             // txtDeviceKey
             // 
             this.txtDeviceKey.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtDeviceKey.Location = new System.Drawing.Point(167, 80);
-            this.txtDeviceKey.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
+            this.txtDeviceKey.Location = new System.Drawing.Point(77, 40);
             this.txtDeviceKey.Name = "txtDeviceKey";
             this.txtDeviceKey.ReadOnly = true;
-            this.txtDeviceKey.Size = new System.Drawing.Size(1066, 36);
+            this.txtDeviceKey.Size = new System.Drawing.Size(494, 22);
             this.txtDeviceKey.TabIndex = 2;
             // 
             // lblDeviceId
             // 
             this.lblDeviceId.AutoSize = true;
-            this.lblDeviceId.Location = new System.Drawing.Point(46, 30);
-            this.lblDeviceId.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
+            this.lblDeviceId.Location = new System.Drawing.Point(21, 15);
             this.lblDeviceId.Name = "lblDeviceId";
-            this.lblDeviceId.Size = new System.Drawing.Size(98, 24);
+            this.lblDeviceId.Size = new System.Drawing.Size(50, 12);
             this.lblDeviceId.TabIndex = 3;
             this.lblDeviceId.Text = "Device Id";
             // 
             // lblDeviceKey
             // 
             this.lblDeviceKey.AutoSize = true;
-            this.lblDeviceKey.Location = new System.Drawing.Point(26, 86);
-            this.lblDeviceKey.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
+            this.lblDeviceKey.Location = new System.Drawing.Point(12, 43);
             this.lblDeviceKey.Name = "lblDeviceKey";
-            this.lblDeviceKey.Size = new System.Drawing.Size(116, 24);
+            this.lblDeviceKey.Size = new System.Drawing.Size(59, 12);
             this.lblDeviceKey.TabIndex = 3;
             this.lblDeviceKey.Text = "Device Key";
             // 
             // btnUnregistry
             // 
             this.btnUnregistry.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnUnregistry.Location = new System.Drawing.Point(1242, 80);
-            this.btnUnregistry.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
+            this.btnUnregistry.Location = new System.Drawing.Point(573, 40);
             this.btnUnregistry.Name = "btnUnregistry";
-            this.btnUnregistry.Size = new System.Drawing.Size(186, 46);
+            this.btnUnregistry.Size = new System.Drawing.Size(86, 23);
             this.btnUnregistry.TabIndex = 0;
             this.btnUnregistry.Text = "Unregistry";
             this.btnUnregistry.UseVisualStyleBackColor = true;
@@ -129,10 +124,9 @@
             // lblMessage
             // 
             this.lblMessage.AutoSize = true;
-            this.lblMessage.Location = new System.Drawing.Point(59, 204);
-            this.lblMessage.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
+            this.lblMessage.Location = new System.Drawing.Point(27, 102);
             this.lblMessage.Name = "lblMessage";
-            this.lblMessage.Size = new System.Drawing.Size(89, 24);
+            this.lblMessage.Size = new System.Drawing.Size(44, 12);
             this.lblMessage.TabIndex = 3;
             this.lblMessage.Text = "Message";
             // 
@@ -141,20 +135,18 @@
             this.txtMessage.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtMessage.Font = new System.Drawing.Font("新細明體", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.txtMessage.Location = new System.Drawing.Point(167, 204);
-            this.txtMessage.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
+            this.txtMessage.Location = new System.Drawing.Point(77, 102);
             this.txtMessage.Multiline = true;
             this.txtMessage.Name = "txtMessage";
-            this.txtMessage.Size = new System.Drawing.Size(1066, 378);
+            this.txtMessage.Size = new System.Drawing.Size(494, 191);
             this.txtMessage.TabIndex = 2;
             // 
             // btnSend
             // 
             this.btnSend.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSend.Location = new System.Drawing.Point(1242, 340);
-            this.btnSend.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
+            this.btnSend.Location = new System.Drawing.Point(573, 170);
             this.btnSend.Name = "btnSend";
-            this.btnSend.Size = new System.Drawing.Size(186, 46);
+            this.btnSend.Size = new System.Drawing.Size(86, 23);
             this.btnSend.TabIndex = 0;
             this.btnSend.Text = "Send";
             this.btnSend.UseVisualStyleBackColor = true;
@@ -163,10 +155,10 @@
             // btnReceiveMessage
             // 
             this.btnReceiveMessage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnReceiveMessage.Location = new System.Drawing.Point(1242, 284);
-            this.btnReceiveMessage.Margin = new System.Windows.Forms.Padding(4);
+            this.btnReceiveMessage.Location = new System.Drawing.Point(573, 142);
+            this.btnReceiveMessage.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnReceiveMessage.Name = "btnReceiveMessage";
-            this.btnReceiveMessage.Size = new System.Drawing.Size(186, 46);
+            this.btnReceiveMessage.Size = new System.Drawing.Size(86, 23);
             this.btnReceiveMessage.TabIndex = 5;
             this.btnReceiveMessage.Text = "Receive MSG";
             this.btnReceiveMessage.UseVisualStyleBackColor = true;
@@ -175,27 +167,24 @@
             // lblUpload
             // 
             this.lblUpload.AutoSize = true;
-            this.lblUpload.Location = new System.Drawing.Point(26, 150);
-            this.lblUpload.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
+            this.lblUpload.Location = new System.Drawing.Point(12, 75);
             this.lblUpload.Name = "lblUpload";
-            this.lblUpload.Size = new System.Drawing.Size(116, 24);
+            this.lblUpload.Size = new System.Drawing.Size(59, 12);
             this.lblUpload.TabIndex = 3;
             this.lblUpload.Text = "Upload File";
             // 
             // txtFileName
             // 
-            this.txtFileName.Location = new System.Drawing.Point(167, 142);
-            this.txtFileName.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
+            this.txtFileName.Location = new System.Drawing.Point(77, 71);
             this.txtFileName.Name = "txtFileName";
-            this.txtFileName.Size = new System.Drawing.Size(301, 36);
+            this.txtFileName.Size = new System.Drawing.Size(141, 22);
             this.txtFileName.TabIndex = 1;
             // 
             // btnFile
             // 
-            this.btnFile.Location = new System.Drawing.Point(483, 140);
-            this.btnFile.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
+            this.btnFile.Location = new System.Drawing.Point(223, 70);
             this.btnFile.Name = "btnFile";
-            this.btnFile.Size = new System.Drawing.Size(67, 46);
+            this.btnFile.Size = new System.Drawing.Size(31, 23);
             this.btnFile.TabIndex = 0;
             this.btnFile.Text = "(F)";
             this.btnFile.UseVisualStyleBackColor = true;
@@ -205,29 +194,26 @@
             // 
             this.txtBlobName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtBlobName.Location = new System.Drawing.Point(702, 142);
-            this.txtBlobName.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
+            this.txtBlobName.Location = new System.Drawing.Point(324, 71);
             this.txtBlobName.Name = "txtBlobName";
-            this.txtBlobName.Size = new System.Drawing.Size(531, 36);
+            this.txtBlobName.Size = new System.Drawing.Size(247, 22);
             this.txtBlobName.TabIndex = 1;
             // 
             // lblBlobName
             // 
             this.lblBlobName.AutoSize = true;
-            this.lblBlobName.Location = new System.Drawing.Point(563, 150);
-            this.lblBlobName.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
+            this.lblBlobName.Location = new System.Drawing.Point(260, 75);
             this.lblBlobName.Name = "lblBlobName";
-            this.lblBlobName.Size = new System.Drawing.Size(113, 24);
+            this.lblBlobName.Size = new System.Drawing.Size(58, 12);
             this.lblBlobName.TabIndex = 3;
             this.lblBlobName.Text = "Blob Name";
             // 
             // btnUploadFile
             // 
             this.btnUploadFile.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnUploadFile.Location = new System.Drawing.Point(1242, 140);
-            this.btnUploadFile.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
+            this.btnUploadFile.Location = new System.Drawing.Point(573, 70);
             this.btnUploadFile.Name = "btnUploadFile";
-            this.btnUploadFile.Size = new System.Drawing.Size(186, 46);
+            this.btnUploadFile.Size = new System.Drawing.Size(86, 23);
             this.btnUploadFile.TabIndex = 0;
             this.btnUploadFile.Text = "Upload";
             this.btnUploadFile.UseVisualStyleBackColor = true;
@@ -241,10 +227,10 @@
             // btnSendAndStop
             // 
             this.btnSendAndStop.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSendAndStop.Location = new System.Drawing.Point(1242, 396);
-            this.btnSendAndStop.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
+            this.btnSendAndStop.Location = new System.Drawing.Point(573, 198);
+            this.btnSendAndStop.Margin = new System.Windows.Forms.Padding(1, 2, 1, 2);
             this.btnSendAndStop.Name = "btnSendAndStop";
-            this.btnSendAndStop.Size = new System.Drawing.Size(186, 100);
+            this.btnSendAndStop.Size = new System.Drawing.Size(86, 50);
             this.btnSendAndStop.TabIndex = 6;
             this.btnSendAndStop.Text = "Send with timer";
             this.btnSendAndStop.UseVisualStyleBackColor = true;
@@ -255,10 +241,10 @@
             this.rbnIoTHub.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.rbnIoTHub.Checked = true;
             this.rbnIoTHub.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.rbnIoTHub.Location = new System.Drawing.Point(1242, 504);
-            this.rbnIoTHub.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
+            this.rbnIoTHub.Location = new System.Drawing.Point(573, 252);
+            this.rbnIoTHub.Margin = new System.Windows.Forms.Padding(1, 2, 1, 2);
             this.rbnIoTHub.Name = "rbnIoTHub";
-            this.rbnIoTHub.Size = new System.Drawing.Size(184, 28);
+            this.rbnIoTHub.Size = new System.Drawing.Size(85, 14);
             this.rbnIoTHub.TabIndex = 7;
             this.rbnIoTHub.TabStop = true;
             this.rbnIoTHub.Text = "To IoT Hub";
@@ -268,10 +254,10 @@
             // 
             this.rbnWebGateway.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.rbnWebGateway.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.rbnWebGateway.Location = new System.Drawing.Point(1242, 538);
-            this.rbnWebGateway.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
+            this.rbnWebGateway.Location = new System.Drawing.Point(573, 269);
+            this.rbnWebGateway.Margin = new System.Windows.Forms.Padding(1, 2, 1, 2);
             this.rbnWebGateway.Name = "rbnWebGateway";
-            this.rbnWebGateway.Size = new System.Drawing.Size(184, 36);
+            this.rbnWebGateway.Size = new System.Drawing.Size(85, 18);
             this.rbnWebGateway.TabIndex = 7;
             this.rbnWebGateway.Text = "To WebAPI";
             this.rbnWebGateway.UseVisualStyleBackColor = true;
@@ -286,10 +272,10 @@
             this.lblSendMessage.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lblSendMessage.AutoSize = true;
-            this.lblSendMessage.Location = new System.Drawing.Point(163, 588);
-            this.lblSendMessage.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblSendMessage.Location = new System.Drawing.Point(75, 294);
+            this.lblSendMessage.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.lblSendMessage.Name = "lblSendMessage";
-            this.lblSendMessage.Size = new System.Drawing.Size(173, 24);
+            this.lblSendMessage.Size = new System.Drawing.Size(87, 12);
             this.lblSendMessage.TabIndex = 8;
             this.lblSendMessage.Text = "[lblSendMessage]";
             // 
@@ -298,10 +284,10 @@
             this.plSplit.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.plSplit.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.plSplit.Location = new System.Drawing.Point(167, 626);
-            this.plSplit.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
+            this.plSplit.Location = new System.Drawing.Point(77, 313);
+            this.plSplit.Margin = new System.Windows.Forms.Padding(1, 2, 1, 2);
             this.plSplit.Name = "plSplit";
-            this.plSplit.Size = new System.Drawing.Size(1276, 4);
+            this.plSplit.Size = new System.Drawing.Size(591, 4);
             this.plSplit.TabIndex = 9;
             // 
             // txtCallMethodReturnValue
@@ -310,30 +296,29 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtCallMethodReturnValue.Font = new System.Drawing.Font("新細明體", 15.75F);
-            this.txtCallMethodReturnValue.Location = new System.Drawing.Point(702, 748);
-            this.txtCallMethodReturnValue.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
+            this.txtCallMethodReturnValue.Location = new System.Drawing.Point(324, 374);
+            this.txtCallMethodReturnValue.Margin = new System.Windows.Forms.Padding(1, 2, 1, 2);
             this.txtCallMethodReturnValue.Multiline = true;
             this.txtCallMethodReturnValue.Name = "txtCallMethodReturnValue";
-            this.txtCallMethodReturnValue.Size = new System.Drawing.Size(531, 314);
+            this.txtCallMethodReturnValue.Size = new System.Drawing.Size(247, 137);
             this.txtCallMethodReturnValue.TabIndex = 10;
             // 
             // lblCallMethod
             // 
             this.lblCallMethod.AutoSize = true;
-            this.lblCallMethod.Location = new System.Drawing.Point(698, 700);
-            this.lblCallMethod.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblCallMethod.Location = new System.Drawing.Point(322, 350);
+            this.lblCallMethod.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.lblCallMethod.Name = "lblCallMethod";
-            this.lblCallMethod.Size = new System.Drawing.Size(248, 24);
+            this.lblCallMethod.Size = new System.Drawing.Size(128, 12);
             this.lblCallMethod.TabIndex = 11;
             this.lblCallMethod.Text = "Call Method Return Value";
             // 
             // btnRegistryMethod
             // 
             this.btnRegistryMethod.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnRegistryMethod.Location = new System.Drawing.Point(1242, 648);
-            this.btnRegistryMethod.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
+            this.btnRegistryMethod.Location = new System.Drawing.Point(573, 324);
             this.btnRegistryMethod.Name = "btnRegistryMethod";
-            this.btnRegistryMethod.Size = new System.Drawing.Size(186, 76);
+            this.btnRegistryMethod.Size = new System.Drawing.Size(86, 38);
             this.btnRegistryMethod.TabIndex = 12;
             this.btnRegistryMethod.Text = "Registry Method";
             this.btnRegistryMethod.UseVisualStyleBackColor = true;
@@ -342,10 +327,10 @@
             // lblMethodName
             // 
             this.lblMethodName.AutoSize = true;
-            this.lblMethodName.Location = new System.Drawing.Point(104, 652);
-            this.lblMethodName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblMethodName.Location = new System.Drawing.Point(48, 326);
+            this.lblMethodName.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.lblMethodName.Name = "lblMethodName";
-            this.lblMethodName.Size = new System.Drawing.Size(139, 24);
+            this.lblMethodName.Size = new System.Drawing.Size(71, 12);
             this.lblMethodName.TabIndex = 13;
             this.lblMethodName.Text = "Method Name";
             // 
@@ -353,19 +338,18 @@
             // 
             this.txtMethodName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtMethodName.Location = new System.Drawing.Point(267, 648);
-            this.txtMethodName.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
+            this.txtMethodName.Location = new System.Drawing.Point(123, 324);
             this.txtMethodName.Name = "txtMethodName";
-            this.txtMethodName.Size = new System.Drawing.Size(966, 36);
+            this.txtMethodName.Size = new System.Drawing.Size(448, 22);
             this.txtMethodName.TabIndex = 14;
             // 
             // lblIoTSendValue
             // 
             this.lblIoTSendValue.AutoSize = true;
-            this.lblIoTSendValue.Location = new System.Drawing.Point(262, 700);
-            this.lblIoTSendValue.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblIoTSendValue.Location = new System.Drawing.Point(121, 350);
+            this.lblIoTSendValue.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.lblIoTSendValue.Name = "lblIoTSendValue";
-            this.lblIoTSendValue.Size = new System.Drawing.Size(148, 24);
+            this.lblIoTSendValue.Size = new System.Drawing.Size(75, 12);
             this.lblIoTSendValue.TabIndex = 15;
             this.lblIoTSendValue.Text = "IoT Sent Value";
             // 
@@ -373,19 +357,18 @@
             // 
             this.txtIoTSentValue.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.txtIoTSentValue.Location = new System.Drawing.Point(267, 748);
-            this.txtIoTSentValue.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
+            this.txtIoTSentValue.Location = new System.Drawing.Point(123, 374);
             this.txtIoTSentValue.Multiline = true;
             this.txtIoTSentValue.Name = "txtIoTSentValue";
             this.txtIoTSentValue.ReadOnly = true;
-            this.txtIoTSentValue.Size = new System.Drawing.Size(409, 314);
+            this.txtIoTSentValue.Size = new System.Drawing.Size(191, 137);
             this.txtIoTSentValue.TabIndex = 16;
             // 
             // frmMain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 24F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1454, 1088);
+            this.ClientSize = new System.Drawing.Size(671, 522);
             this.Controls.Add(this.txtIoTSentValue);
             this.Controls.Add(this.lblIoTSendValue);
             this.Controls.Add(this.txtMethodName);
@@ -414,7 +397,6 @@
             this.Controls.Add(this.btnUploadFile);
             this.Controls.Add(this.btnUnregistry);
             this.Controls.Add(this.btnRegistry);
-            this.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.Name = "frmMain";
             this.Text = "IoT Device Simulator";
             this.Load += new System.EventHandler(this.frmMain_Load);
